@@ -46,23 +46,25 @@ class talibIndicators:
         return self.df
 
 
-    def plot_stock_price_with_moving_average(df, titel='Stock Price with Moving Averages'):
+    def plot_stock_price_with_moving_average(self, titel="apple"):
         
         # Plot Close Price with SMA and EMA
         plt.figure(figsize=(14, 7))
-        plt.plot(df['Close'], label='Close Price', color='blue')
-        plt.plot(df['SMA_20'], label='SMA 20', color='green')
-        plt.plot(df['EMA_20'], label='EMA 20', color='red')
-        plt.title(titel)
+        plt.plot(self.df['Close'], label='Close Price', color='blue')
+        plt.plot(self.df['SMA_20'], label='SMA 20', color='green')
+        plt.plot(self.df['ema'], label='EMA 20', color='red')
+        plt.title(f"{titel}'s Stock Price with Moving Averages")
         plt.legend()
         plt.show()
+        return plt
 
-    def plot_relative_rsi(df, title='Relative Strength Index (RSI)'):
+    def plot_relative_rsi(self, title="Apple"):
         # Plot RSI
         plt.figure(figsize=(14, 7))
-        plt.plot(df['RSI'], label='RSI', color='purple')
+        plt.plot(self.df['rsi'], label='RSI', color='purple')
         plt.axhline(70, color='red', linestyle='--', label='Overbought')
         plt.axhline(30, color='green', linestyle='--', label='Oversold')
-        plt.title()
+        plt.title(f"{title}'s Relative Strength Index (RSI)")
         plt.legend()
         plt.show()
+        return plt
